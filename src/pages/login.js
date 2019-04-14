@@ -6,21 +6,17 @@ import { Redirect } from 'react-router-dom'
 export default class Login extends Component {
     state = {
       user:"",
+      status:false,
     }
       handleLogin = async () => {
         const http = await axios.post('http://localhost:3000/login', {
           username: this.state.user
         })
-        if (http.data) {
-          //console.log("asdasdasd");
-          return (
-            <div>
-              <Redirect to='/login/otp' />
-            </div>
-          )
-        }
-       // console.log(http.data);
-        
+        if (http.data) this.setState({status:true}) 
+      }
+      cheackLink= () =>{
+        if(this.state.status)
+        return <Redirect to='/login/otp' />
       }
     render() {
         return (
@@ -43,6 +39,7 @@ export default class Login extends Component {
                   </Col>
                 </Row>
               </Container>
+              {this.cheackLink()}
             </div>
         );
     }
