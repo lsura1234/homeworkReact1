@@ -15,8 +15,17 @@ export default class Otp extends Component {
           email: this.state.email,
           otp:this.state.user
         })
-        this.setState({ data: http.data })
-        if (http.data) this.setState({status:true}) 
+        if (http.data!=="no"){
+          this.setState({ data: http.data })
+          this.setState({status:true}) 
+           }
+        else{ 
+          this.setState({user:""})
+          return(
+          alert("You OTP wrong")
+          )
+         
+        }
       }
       show=()=>{
         
@@ -43,7 +52,7 @@ export default class Otp extends Component {
                          <Label for="exampleEmail">Email</Label>
                          <Input type="email" name="mail" id="exampleEmail" onChange={(e) => this.setState({email:e.target.value})} placeholder="Enter mail"  />
                          <Label for="exampleEmail2">OTP</Label>
-                          <Input type="password" name="test" id="exampleEmail2" onChange={(e) => this.setState({user:e.target.value})} placeholder="Enter OTP"  />
+                          <Input type="password" name="test" value={this.state.user} id="exampleEmail2" onChange={(e) => this.setState({user:e.target.value})} placeholder="Enter OTP"  />
                     <Row>
                       <Col xs="5"></Col>
                       <Button color="success" onClick={(e)=>this.handleLogin()}>Login</Button>

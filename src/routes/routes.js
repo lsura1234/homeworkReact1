@@ -5,6 +5,9 @@ import Withdraw from '../pages/Withdraw'
 import Login from '../pages/login'
 import Otp from '../pages/otp'
 import Callback from '../pages/Callback'
+import Register from '../pages/register'
+import Tranfer from '../pages/tranfer'
+import Bill from '../pages/bill'
 
 const Routes = () => {
     return (
@@ -15,6 +18,9 @@ const Routes = () => {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/login/otp" component={Otp} />
                 <Route exact path="/callback" component={Callback} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/tranfer" component={Tranfer} />
+                <Route exact path="/bill" component={Bill} />
             </Router>
         </div>
     )
